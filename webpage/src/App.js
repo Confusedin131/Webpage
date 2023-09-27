@@ -1,9 +1,9 @@
 import './App.css';
-
+import NewsInfo from './components/NewsInfo';
 function App() {
   return (
     <div className="App">
-      <p>test</p>
+      <NewsInfo />
     </div>
   );
 }
