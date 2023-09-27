@@ -11,9 +11,8 @@ import Box from '@mui/material/Box';
 
 
 
-const url = 'https://corsproxy.io/?' + encodeURIComponent(newsurl);
 
-var newsurl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=b70d50e3ea6a4c32b23c49337d4d4d77';
+var url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=b70d50e3ea6a4c32b23c49337d4d4d77';
 
 var req = new Request(url);
 
