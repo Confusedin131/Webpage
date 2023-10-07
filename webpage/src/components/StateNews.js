@@ -8,18 +8,17 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Paper } from '@mui/material';
 import Box from '@mui/material/Box';
-
-var url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=b70d50e3ea6a4c32b23c49337d4d4d77';
-
-var req = new Request(url);
-
+var url = 'https://newsapi.org/v2/everything?q=Michigan&searchIn=title&sortBy=popularity&pageSize=30&apiKey=b70d50e3ea6a4c32b23c49337d4d4d77';
 
 fetch(req)
   .then(function (response) {
     console.log(response.json());
   })
 
-const NewsInfo = () => {
+var req = new Request(url);
+
+
+const StateNews = () => {
   const [articles, setArticles] = useState([]);
   const [currentArticle, setCurrentArticle] = useState(null);
   const fetchInterval = 5 * 60 * 60 * 1000;//5 hours
@@ -41,7 +40,6 @@ const NewsInfo = () => {
       });
 
   };
-
   useEffect(() => {
     fetchNews();
     const interval = setInterval(() => {
@@ -50,9 +48,8 @@ const NewsInfo = () => {
 
     return () => clearInterval(interval);
   }, []);
-
   return (
-    <div>
+    <div >
       {currentArticle &&
         <Paper elevation={3}
           sx={{
@@ -69,7 +66,7 @@ const NewsInfo = () => {
             flexDirection: 'column',
             justifyContent: 'center',
             alignItems: 'center',
-            textAlign: 'center',
+            textAlign: 'center'
           }}>
           {<img style={{ display: 'none' }} src={currentArticle.urlToImage} />}
           <Box
@@ -106,7 +103,7 @@ const NewsInfo = () => {
         </Paper>
 
       }
-      <h1>Top US Headlines</h1>
+      <h1>Top Michigan Headlines</h1>
       <Grid container spacing={3} justifyContent="center" alignItems="center">
         {articles
           .filter((article) => article.title !== "[Removed]")
@@ -137,4 +134,4 @@ const NewsInfo = () => {
   )
 }
 
-export default NewsInfo
+export default StateNews
