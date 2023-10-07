@@ -9,21 +9,16 @@ import CardMedia from '@mui/material/CardMedia';
 import { Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 
-var url = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=b70d50e3ea6a4c32b23c49337d4d4d77';
+const NewsInfo = ({ url, title }) => {
+  var req = new Request(url);
+  fetch(req)
+    .then(function (response) {
+      console.log(response.json());
+    })
 
-var req = new Request(url);
-
-
-fetch(req)
-  .then(function (response) {
-    console.log(response.json());
-  })
-
-const NewsInfo = () => {
   const [articles, setArticles] = useState([]);
   const [currentArticle, setCurrentArticle] = useState(null);
   const fetchInterval = 5 * 60 * 60 * 1000;//5 hours
-
 
   const fetchNews = () => {
 
@@ -106,7 +101,7 @@ const NewsInfo = () => {
         </Paper>
 
       }
-      <h1>Top US Headlines</h1>
+      <h1>{title}</h1>
       <Grid container spacing={3} justifyContent="center" alignItems="center">
         {articles
           .filter((article) => article.title !== "[Removed]")

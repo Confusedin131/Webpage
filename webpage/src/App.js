@@ -1,5 +1,4 @@
 import './App.css';
-import NewsInfo from './components/NewsInfo';
 import NavBar from './components/NavBar';
 import {
   BrowserRouter,
@@ -7,7 +6,8 @@ import {
   Route
 } from 'react-router-dom';
 import LocalNews from './components/LocalNews';
-import StateNews from './components/StateNews';
+import MichiganNews from './components/MichiganNews';
+import NationalNews from './components/NationalNews';
 function App() {
   return (
     <div className="App">
@@ -16,8 +16,8 @@ function App() {
           <NavBar />
           <Routes>
             <Route path="/" element={<LocalNews />} />
-            <Route path="/state-news" element={<StateNews />} />
-            <Route path="/national-news" element={<NewsInfo />} />
+            <Route path="/state-news" element={<MichiganNews />} />
+            <Route path="/national-news" element={<NationalNews />} />
           </Routes>
         </div>
       </BrowserRouter>
