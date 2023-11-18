@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -8,32 +8,32 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { Paper } from '@mui/material';
 import Box from '@mui/material/Box';
+import newsController from '../controllers/NewsController';
 
-const NewsInfo = ({ url, title }) => {
-  const req = new Request(url);
-
-  const fetchNews = () => {
-    fetch(req)
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.articles) {
-          setArticles(data.articles);
-          setCurrentArticle(data.articles[0]);
-        }
-      })
-      .catch((error) => {
-        console.error("error fetching data", error);
-      });
-  };
+const NewsInfoView = ({ url, title }) => {
 
   const [articles, setArticles] = useState([]);
   const [currentArticle, setCurrentArticle] = useState(null);
   const fetchInterval = 5 * 60 * 60 * 1000; // 5 hours
 
+  const fetchNews = useCallback(async () => {
+    const data = await newsController.fetchNewsData(url);
+
+    if (data.length > 0) {
+      setArticles(data);
+      setCurrentArticle(data[0]);
+    }
+  }, [url]);
+
   useEffect(() => {
-    fetchNews();
+    const fetchNewsWrapper = async () => {
+      await fetchNews();
+    };
+
+    fetchNewsWrapper();
+
     const interval = setInterval(() => {
-      fetchNews();
+      fetchNewsWrapper();
     }, fetchInterval);
 
     return () => clearInterval(interval);
@@ -88,7 +88,7 @@ const NewsInfo = ({ url, title }) => {
                   {currentArticle.description}
                 </Typography>
                 <Typography variant="subtitle1" color="inherit">
-                  <Button sx={{ backgroundColor: 'black', fontFamily: "Segoe UI" }} size="large" variant="contained" href={currentArticle.url} target="_blank">
+                  <Button sx={{ backgroundColor: 'black', fontFamily: 'Segoe UI' }} size="large" variant="contained" href={currentArticle.url} target="_blank">
                     Read more . . 
                   </Button>
                 </Typography>
@@ -127,4 +127,4 @@ const NewsInfo = ({ url, title }) => {
   );
 };
 
-export default NewsInfo;
+export default NewsInfoView;
