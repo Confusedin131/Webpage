@@ -1,35 +1,3 @@
-
-/*import './App.css';
-import NavBar from './components/NavBar';
-import {
-  BrowserRouter,
-  Routes,
-  Route
-} from 'react-router-dom';
-// import LocalNews from './components/LocalNews';
-// import MichiganNews from './components/MichiganNews';
-// import NationalNews from './components/NationalNews';
-function App() {
-  return (
-    <div className="App">
-      <BrowserRouter>
-        <div className="App">
-          <NavBar />
-          <Routes>
-            <Route path="/" element={<LocalNews />} />
-            <Route path="/state-news" element={<MichiganNews />} />
-            <Route path="/national-news" element={<NationalNews />} />
-          </Routes>
-        </div>
-      </BrowserRouter>
-    </div>
-  );
-}
-
-export default App;
-*/
-// App.js
-
 import './App.css';
 import NavBar from './components/NavBar';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
@@ -44,6 +12,7 @@ import Edit from './views/admin/Edit';
 import ArchiveView from './views/ArchiveView';
 import EditAnnounce from './views/admin/EditAnnounce';
 import DeletePost from './views/admin/DeletePost';
+import SearchView from './views/SearchView';
 function App() {
   return (
     <div className="App">
@@ -62,6 +31,7 @@ function App() {
             <Route path ="/delete-post" element={<DeletePost/>}/>
             <Route path = "/edit-announcement" element ={<EditAnnounce/>}/>
             <Route path = '/archive' element={<ArchiveView/>}/>
+            <Route path = '/search' element={<SearchView/>}/>
 
           </Routes>
         </div>

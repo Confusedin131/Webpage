@@ -18,6 +18,7 @@ const NewsInfoView = ({ url, title }) => {
 
   const fetchNews = useCallback(async () => {
     const data = await newsController.fetchNewsData(url);
+    console.log(data)
 
     if (data.length > 0) {
       setArticles(data);
@@ -89,7 +90,7 @@ const NewsInfoView = ({ url, title }) => {
                 </Typography>
                 <Typography variant="subtitle1" color="inherit">
                   <Button sx={{ backgroundColor: 'black', fontFamily: 'Segoe UI' }} size="large" variant="contained" href={currentArticle.url} target="_blank">
-                    Read more . . 
+                    Read more . .
                   </Button>
                 </Typography>
               </Box>
@@ -102,6 +103,9 @@ const NewsInfoView = ({ url, title }) => {
         {articles
           .filter((article) => article.title !== "[Removed]")
           .map((article, index) => (
+            //console.log('Article:', article),
+
+
             <Grid item xs={12} md={5} key={index}>
               <CardActionArea component="a" href={article.url} target="_blank">
                 <Card sx={{ display: 'flex', minHeight: '100%' }}>
@@ -110,7 +114,7 @@ const NewsInfoView = ({ url, title }) => {
                       {article.title}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary" fontWeight="medium" fontSize={18} fontFamily="inherit">
-                      {article.author}
+                      {article.author}, {article.source}
                     </Typography>
                     <Typography variant="subtitle1" paragraph fontWeight="regular" fontSize={15} fontFamily="inherit">
                       {article.description}
@@ -120,8 +124,12 @@ const NewsInfoView = ({ url, title }) => {
                   <CardMedia component="img" sx={{ width: 200, display: { xs: 'none', sm: 'block' } }} image={article.urlToImage} alt="Article" />
                 </Card>
               </CardActionArea>
+
             </Grid>
+
+
           ))}
+
       </Grid>
     </div>
   );

@@ -12,7 +12,7 @@ const NationalNewsView = () => {
   }, []);
 
   return (
-    <NewsInfoView url={apiUrl} title='Top US Headlines' />  );
+    <NewsInfoView url={apiUrl} title='Top US Headlines' />);
 };
 
 export default NationalNewsView;

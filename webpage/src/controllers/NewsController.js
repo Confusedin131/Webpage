@@ -18,7 +18,8 @@ class NewsController {
                             article.description,
                             article.url,
                             article.urlToImage,
-                            article.author
+                            article.author,
+                            article.source.name
                         )
                     );
                 }

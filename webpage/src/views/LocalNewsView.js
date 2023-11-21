@@ -9,6 +9,9 @@ import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
 import LocalNewsController from '../controllers/LocalNewsController';
+import { List, ListItem, ListItemText, ListItemIcon } from '@mui/material';
+import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
+
 const images = [
 
     {
@@ -47,7 +50,7 @@ const LocalNews = () => {
 
     return (
         <LocalNewsController>
-            {(posts) => (
+            {(posts, archposts, announcement) => (
                 <div sx={{ fontFamily: 'Segoe UI' }}>
 
                     <div >
@@ -115,8 +118,7 @@ const LocalNews = () => {
                                                     {post.date} by {post.author}
                                                 </Typography>
                                                 <Typography variant='body1' sx={{ whiteSpace: 'pre-wrap', overflowWrap: 'break-word', marginTop: '10px', textIndent: '45px', fontFamily: 'Segoe UI' }}>
-                                                    {post.bodyText.replace(/__NEWLINE__/g, '\n\n         ')}
-                                                    {post.bodyText.replace(/__NEWLINE__\s*$/, '')}
+                                                    {post.bodyText.replace(/__NEWLINE__/g, '\n\n         ').replace(/__NEWLINE__\s*$/, '')}
                                                 </Typography>
                                             </div>
 
@@ -167,16 +169,40 @@ const LocalNews = () => {
                                         <Typography sx={{ fontFamily: 'inherit' }} variant="h6" gutterBottom >
                                             Public Announcements
                                         </Typography>
-                                        <Typography sx={{ fontFamily: 'inherit' }} variant="subtitle1">10/7/23</Typography>
-                                        <Typography sx={{ fontFamily: 'inherit' }} variant="body1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos blanditiis tenetur unde suscipit, quam beatae rerum inventore consectetur, neque doloribus, cupiditate numquam dignissimos laborum fugiat deleniti? Eum quasi quidem quibusdam.
+                                        <Typography sx={{ fontFamily: 'inherit' }} variant="subtitle1">{announcement.date}</Typography>
+                                        <Typography sx={{ marginTop: '15px', fontFamily: 'inherit' }} variant="body1">
+                                            {announcement.announceText && announcement.announceText.split('__NEWLINE__').map((paragraph, index) => (
+                                                <React.Fragment key={index}>
+                                                    {index > 0 && <br />} {/* Add <br> except for the first paragraph */}
+                                                    {paragraph}
+                                                </React.Fragment>
+                                            ))}
                                         </Typography>
                                     </Paper>
                                     <Typography variant='h5' sx={{ fontWeight: 'bold', fontFamily: 'inherit', marginTop: '30px' }}>
                                         Extra Information
                                         <Typography variant='body1' sx={{ fontFamily: 'inherit', marginTop: '10px' }}>
-                                            You can put Links, Archives, etc.
-                                            <br />
-                                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                            You can put Links, etc.
+                                            <List>
+                                                <ListItem>
+                                                    <ListItemIcon>
+                                                        <RadioButtonCheckedIcon />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary="Item 1" />
+                                                </ListItem><ListItem>
+                                                    <ListItemIcon>
+                                                        <RadioButtonCheckedIcon />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary="Item 2" />
+                                                </ListItem>
+                                                <ListItem>
+                                                    <ListItemIcon>
+                                                        <RadioButtonCheckedIcon />
+                                                    </ListItemIcon>
+                                                    <ListItemText primary="Item 3" />
+                                                </ListItem>
+
+                                            </List>
                                         </Typography>
                                     </Typography>
                                 </Grid>

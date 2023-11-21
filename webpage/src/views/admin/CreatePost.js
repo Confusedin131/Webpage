@@ -1,7 +1,6 @@
 import React from 'react'
 import { Button, Container, TextField, Typography } from '@mui/material'
-import CreatePostController from '../../controllers/CreatePostController'
-
+import CreatePostController from '../../controllers/admin/CreatePostController';
 const CreatePost = () => {
   const controller = CreatePostController();
   const { title, author, date, text, handleTitleChange, handleAuthorChange, handleDateChange, handleTextChange, handleCreatePost } = controller;
@@ -39,7 +38,7 @@ const CreatePost = () => {
           Author
         </Typography>
         <TextField
-          sx={{whiteSpace: 'pre-line', width: '600px' }}
+          sx={{ whiteSpace: 'pre-line', width: '600px' }}
           required
           multiline
           value={author}
@@ -55,6 +54,7 @@ const CreatePost = () => {
           value={text}
           onChange={handleTextChange}
         />
+
         <br />
         <Button
 

@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { getDatabase, ref, push } from 'firebase/database';
-import Posts from '../models/Posts';
+import Posts from '../../models/Posts';
 
 const CreatePostController = () => {
   const [title, setTitle] = useState('');
@@ -23,16 +23,18 @@ const CreatePostController = () => {
   const handleTextChange = (event) => {
     setText(event.target.value);
   };
+ 
 
   const handleCreatePost = (e) => {
-    console.log('it works'); // Make sure this is logged
+    console.log('Post created'); // Make sure this is logged
     e.preventDefault();
     const textWithPlaceholder = text.replace(/\n/g, '__NEWLINE__');
 
     const newPost = new Posts(title, author, date, textWithPlaceholder);
-    
+
     const database = getDatabase();
     const postsRef = ref(database, 'posts');
+
     
     push(postsRef, newPost);
     
