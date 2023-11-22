@@ -8,7 +8,7 @@ import { Link } from 'react-router-dom';
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
-import AuthController from '../controllers/AuthController';
+import AuthController from '../controllers/Auth/AuthController';
 
 const NavBar = () => {
     const [searchValue, setSearchValue] = useState('');
@@ -107,7 +107,7 @@ const NavBar = () => {
                                         placeholder="Search for articles..."
                                         inputProps={{ 'aria-label': 'search' }}
                                         value={searchValue}
-                                        autoFocus={searchValue !== ''} 
+                                        autoFocus={searchValue !== ''}
                                         onInput={(e) => setSearchValue(e.target.value)}
                                         onKeyDown={handleKeyPress}
                                     />

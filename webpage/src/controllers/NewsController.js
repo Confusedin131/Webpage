@@ -11,18 +11,19 @@ class NewsController {
             .then((data) => {
                 if (data.articles) {
                     this.newsData = data.articles
-                    .filter((article) => article.title !== '[Removed]')
-                    .map((article) =>
-                        new NewsModel(
-                            article.title,
-                            article.description,
-                            article.url,
-                            article.urlToImage,
-                            article.author,
-                            article.source.name
-                        )
-                    );
+                        .filter((article) => article.title !== '[Removed]')
+                        .map((article) =>
+                            new NewsModel(
+                                article.title,
+                                article.description,
+                                article.url,
+                                article.urlToImage,
+                                article.author,
+                                article.source.name
+                            )
+                        );
                 }
+
                 return this.newsData;
             })
             .catch((error) => {

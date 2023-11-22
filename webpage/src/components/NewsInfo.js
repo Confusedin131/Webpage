@@ -10,6 +10,9 @@ import { Paper } from '@mui/material';
 import Box from '@mui/material/Box';
 
 const NewsInfo = ({ url, title }) => {
+  const [articles, setArticles] = useState([]);
+  const [currentArticle, setCurrentArticle] = useState(null);
+  const fetchInterval = 6 * 60 * 60 * 1000; // 6 hours
   const req = new Request(url);
 
   const fetchNews = () => {
@@ -25,10 +28,6 @@ const NewsInfo = ({ url, title }) => {
         console.error("error fetching data", error);
       });
   };
-
-  const [articles, setArticles] = useState([]);
-  const [currentArticle, setCurrentArticle] = useState(null);
-  const fetchInterval = 5 * 60 * 60 * 1000; // 5 hours
 
   useEffect(() => {
     fetchNews();
@@ -89,7 +88,7 @@ const NewsInfo = ({ url, title }) => {
                 </Typography>
                 <Typography variant="subtitle1" color="inherit">
                   <Button sx={{ backgroundColor: 'black', fontFamily: "Segoe UI" }} size="large" variant="contained" href={currentArticle.url} target="_blank">
-                    Read more . . 
+                    Read more . .
                   </Button>
                 </Typography>
               </Box>

@@ -3,7 +3,7 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Box from '@mui/material/Box';
 import SendIcon from '@mui/icons-material/Send';
 import { Link } from 'react-router-dom';
-import SignInController from '../controllers/SignInController';
+import SignInController from '../../controllers/Auth/SignInController';
 
 const LoginView = () => {
     const SignInControl = SignInController();
@@ -20,7 +20,7 @@ const LoginView = () => {
 
                     display="flex"
                     flexDirection="column"
-                    alignItems="center" // Center the content horizontally
+                    alignItems="center" 
                     justifyContent="center"
                     marginTop={'150px'}
                 >

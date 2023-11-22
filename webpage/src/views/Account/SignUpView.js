@@ -3,12 +3,11 @@ import { Avatar, Button, Container, TextField, Typography } from '@mui/material'
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Box from '@mui/material/Box';
 import SendIcon from '@mui/icons-material/Send';
-import SignUpController from '../controllers/SignUpController';
+import SignUpController from '../../controllers/Auth/SignUpController';
 
 const SignUpView = () => {
 
     const SignUpControl = SignUpController();
-
 
     const email = SignUpControl.email;
     const password = SignUpControl.password;
@@ -22,7 +21,7 @@ const SignUpView = () => {
 
                     display="flex"
                     flexDirection="column"
-                    alignItems="center" // Center the content horizontally
+                    alignItems="center"
                     justifyContent="center"
                     marginTop="150px"
                 >

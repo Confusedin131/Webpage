@@ -1,3 +1,4 @@
+// NewsInfoView.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
@@ -11,10 +12,10 @@ import Box from '@mui/material/Box';
 import newsController from '../controllers/NewsController';
 
 const NewsInfoView = ({ url, title }) => {
-
   const [articles, setArticles] = useState([]);
   const [currentArticle, setCurrentArticle] = useState(null);
-  const fetchInterval = 5 * 60 * 60 * 1000; // 5 hours
+  const [imageError, setImageError] = useState(false);
+  const fetchInterval = 6 * 60 * 60 * 1000; // 6 hours
 
   const fetchNews = useCallback(async () => {
     const data = await newsController.fetchNewsData(url);
@@ -23,6 +24,8 @@ const NewsInfoView = ({ url, title }) => {
     if (data.length > 0) {
       setArticles(data);
       setCurrentArticle(data[0]);
+      // Reset image error state
+      setImageError(false);
     }
   }, [url]);
 
@@ -39,6 +42,11 @@ const NewsInfoView = ({ url, title }) => {
 
     return () => clearInterval(interval);
   }, [fetchInterval, fetchNews]);
+
+  const handleImageError = () => {
+    // Set image error state to true
+    setImageError(true);
+  };
 
   return (
     <div>
@@ -62,17 +70,25 @@ const NewsInfoView = ({ url, title }) => {
             textAlign: 'center',
           }}
         >
-          <img style={{ display: 'none' }} src={currentArticle.urlToImage} alt="Article" />
-          <Box
-            sx={{
-              position: 'absolute',
-              top: 0,
-              bottom: 0,
-              right: 0,
-              left: 0,
-              backgroundColor: 'rgba(0,0,0,.3)',
-            }}
-          />
+          {currentArticle.urlToImage && !imageError ? (
+            <img
+              style={{ display: 'none' }}
+              src={currentArticle.urlToImage}
+              alt="Article"
+              onError={handleImageError}
+            />
+          ) : (
+            <Box
+              sx={{
+                position: 'absolute',
+                top: 0,
+                bottom: 0,
+                right: 0,
+                left: 0,
+                backgroundColor: 'black', // Black background for image error
+              }}
+            />
+          )}
           <Grid container>
             <Grid item md={6}>
               <Box
@@ -103,9 +119,6 @@ const NewsInfoView = ({ url, title }) => {
         {articles
           .filter((article) => article.title !== "[Removed]")
           .map((article, index) => (
-            //console.log('Article:', article),
-
-
             <Grid item xs={12} md={5} key={index}>
               <CardActionArea component="a" href={article.url} target="_blank">
                 <Card sx={{ display: 'flex', minHeight: '100%' }}>
@@ -121,15 +134,13 @@ const NewsInfoView = ({ url, title }) => {
                     </Typography>
                     <Typography variant="subtitle1" color="primary"></Typography>
                   </CardContent>
-                  <CardMedia component="img" sx={{ width: 200, display: { xs: 'none', sm: 'block' } }} image={article.urlToImage} alt="Article" />
+                  {article.urlToImage && !imageError && (
+                    <CardMedia component="img" sx={{ width: 200, display: { xs: 'none', sm: 'block' } }} image={article.urlToImage} alt="Article" onError={handleImageError} />
+                  )}
                 </Card>
               </CardActionArea>
-
             </Grid>
-
-
           ))}
-
       </Grid>
     </div>
   );

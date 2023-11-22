@@ -26,7 +26,7 @@ const CreatePostController = () => {
  
 
   const handleCreatePost = (e) => {
-    console.log('Post created'); // Make sure this is logged
+    console.log('Post created'); 
     e.preventDefault();
     const textWithPlaceholder = text.replace(/\n/g, '__NEWLINE__');
 

@@ -93,11 +93,11 @@ const LocalNewsController = ({ children }) => {
     // Fetch data initially
     fetchData();
 
-    // Set up interval to fetch data every 20 seconds
+    // Set up interval to fetch data every hour
     const intervalId = setInterval(() => {
-      console.log('20s!');
+      console.log('1hr!');
       fetchData();
-    }, 20000);
+    }, 3600000);
 
     return () => {
       clearInterval(intervalId);

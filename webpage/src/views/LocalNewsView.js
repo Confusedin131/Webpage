@@ -15,21 +15,21 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 const images = [
 
     {
-        label: 'Williamston City Hall',
+        label: 'Williamston City Hall - (new.williamston-mi.us, Williamston Official Website) ',
         imgPath:
             'http://new.williamston-mi.us/Portals/47/pics/City%20Hall%20Sign.JPG'
     },
     {
-        label: 'Downtown Williamston',
+        label: 'Downtown Williamston - (www.williamstontheatre.org, Williamston Theatre Website)',
         imgPath: 'https://www.williamstontheatre.org/sites/default/files/2021-10/williamstondowntown.jpg',
     },
     {
-        label: 'Historic District',
+        label: 'Historic District - (wikimedia, kennethaw88)',
         imgPath:
             'https://upload.wikimedia.org/wikipedia/commons/thumb/0/0f/Downtown_Williamston.jpg/1600px-Downtown_Williamston.jpg'
     },
     {
-        label: 'Memorial Parade',
+        label: 'Memorial Parade - (www.gowcs.net, Williamston Community Schools Website)',
         imgPath:
             'https://www.gowcs.net/cms/lib/MI02209034/Centricity/ModuleInstance/4890/large/IMG_4327.JPG?rnd=0.999423523433238'
     },
