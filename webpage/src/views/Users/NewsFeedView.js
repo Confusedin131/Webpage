@@ -1,4 +1,3 @@
-// NewsFeedView.jsx
 import React, { useState, useEffect, useCallback } from 'react';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -11,7 +10,7 @@ import { Divider } from '@mui/material';
 
 const NewsFeedView = ({ url, category }) => {
     const [articles, setArticles] = useState([]);
-    const fetchInterval = 6 * 60 * 60 * 1000; // 5 hours
+    const fetchInterval = 6 * 60 * 60 * 1000; // 6 hours
 
     const fetchNews = useCallback(async () => {
         try {

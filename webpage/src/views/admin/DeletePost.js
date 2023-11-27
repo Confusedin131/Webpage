@@ -24,7 +24,7 @@ const DeletePost = () => {
         Delete Post
       </Typography>
       <LocalNewsController>
-        {(posts, archposts, fetchData) => (
+        {(posts, archposts, announcement,fetchData) => (
           <Grid>
             {posts.map((post, index) => (
               <div key={post.id}>

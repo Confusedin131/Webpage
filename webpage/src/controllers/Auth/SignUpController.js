@@ -36,7 +36,6 @@ const SignUpController = () => {
                     preferences: new UserPrefs(false, false, false, false, false, false, false),
                 });
 
-                console.log(userCredential);
                 nav('/login');
             })
             .catch((error) => {

@@ -10,7 +10,6 @@ const AuthController = ({ children }) => {
   const [isAdmin, setAdmin] = useState(false);
   const nav = useNavigate();
 
-
   const signOutUser = () => {
     signOut(auth)
       .then(() => {
@@ -30,7 +29,8 @@ const AuthController = ({ children }) => {
         console.log("admin logged in")
         setAdmin(true);
       }
-      setUser(authUser ? true : false);
+      
+      setUser((authUser)? true : false);
 
       if (authUser) {
         const db = getDatabase();

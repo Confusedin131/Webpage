@@ -1,4 +1,3 @@
-// views/MichiganNewsView.js
 import React, { useEffect } from 'react';
 import newsController from '../controllers/NewsController';
 import NewsInfoView from './NewsInfoView';

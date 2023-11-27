@@ -1,6 +1,6 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import { BrowserRouter, Routes, Route} from 'react-router-dom';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import MichiganNewsView from './views/MichiganNewsView';
 import NationalNewsView from './views/NationalNewsView';
 import LocalNews from './views/LocalNewsView';
@@ -22,7 +22,6 @@ function App() {
         <div className="App">
           <NavBar />
           <Routes>
-            {/* Redirect both "/" and "/webpage" to "/local-news" */}
             <Route
               path="/"
               element={<Navigate to="/local-news" />}

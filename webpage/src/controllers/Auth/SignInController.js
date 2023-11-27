@@ -3,7 +3,6 @@ import { auth } from "../../models/firebase";
 import { useNavigate } from 'react-router-dom';
 import { setPersistence, signInWithEmailAndPassword, browserSessionPersistence } from "firebase/auth";
 
-
 const SignInController = () => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -22,7 +21,7 @@ const SignInController = () => {
       .then(() => {
         signInWithEmailAndPassword(auth, email, password)
           .then((userCredential) => {
-            console.log(userCredential)
+            
             nav('/');
           })
           .catch((error) => {

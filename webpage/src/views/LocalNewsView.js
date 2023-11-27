@@ -201,7 +201,6 @@ const LocalNews = () => {
                                                     </ListItemIcon>
                                                     <ListItemText primary="Item 3" />
                                                 </ListItem>
-
                                             </List>
                                         </Typography>
                                     </Typography>
