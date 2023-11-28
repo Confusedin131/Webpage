@@ -15,9 +15,9 @@ import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked';
 const images = [
 
     {
-        label: 'Williamston City Hall - (new.williamston-mi.us, Williamston Official Website) ',
+        label: 'Williamston City Hall - (Google Photos - Scott  Scotson) ',
         imgPath:
-            'http://new.williamston-mi.us/Portals/47/pics/City%20Hall%20Sign.JPG'
+            'https://lh3.googleusercontent.com/p/AF1QipMOB5VlmNsxzAW0ONKM0GMVmqphGQyhpFkT_yY7=s1360-w1360-h1020'
     },
     {
         label: 'Downtown Williamston - (www.williamstontheatre.org, Williamston Theatre Website)',
