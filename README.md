@@ -2,6 +2,9 @@
 
 Hosted on Vercel: https://newsapp-red.vercel.app/local-news
 
+**NOTE: News articles from NewsAPI will not display due to CORS ONLY being enabled on localhost.**
+- A switch from NewsAPI to NewsCatcher is in-progress to fix such issues.
+
 ## Description
 A News Website Project developed for the City of Williamston, Michigan. The goals of this website seek to improve the UI of Williamston's outdated [city webpage](http://new.williamston-mi.us/) while also presenting an array of news to potential users living in Williamston. This website displays news ranging from Williamston's local news, state Michigan news, and national news. Both websections of state news and national news take data from the [NewsCatcher API](https://www.newscatcherapi.com/) while information displayed on the local news subsection can be directly configured by admins. 
 
